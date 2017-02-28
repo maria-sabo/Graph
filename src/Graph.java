@@ -35,6 +35,10 @@ public class Graph {
         vertexList.set(vertexList.indexOf(vertexName), newVertexName);
     }
 
+    public void changeWeight(String vertexBegin, String vertexEnd, int weight) {
+        if (vertexList.contains(vertexBegin) && vertexList.contains(vertexEnd)) addEdge(vertexBegin, vertexEnd, weight);
+    }
+
     public void removeEdge(String vertexBegin, String vertexEnd) {
         if (vertexList.contains(vertexBegin) && vertexList.contains(vertexEnd)) addEdge(vertexBegin, vertexEnd, 0);
     }
@@ -46,7 +50,7 @@ public class Graph {
         vertexList.remove(indexToDel);
     }
 
-    public ArrayList<String> vertexIn(String vertexName) {
+    public ArrayList<String> verticesIn(String vertexName) {
         ArrayList<String> vertexIn = new ArrayList();
         int indexVertex = vertexList.indexOf(vertexName);
         for (int i = 0; i < vertexList.size(); i++) {
@@ -56,7 +60,7 @@ public class Graph {
         return vertexIn;
     }
 
-    public ArrayList<String> vertexOut(String vertexName) {
+    public ArrayList<String> verticesOut(String vertexName) {
         ArrayList<String> vertexOut = new ArrayList();
         int indexVertex = vertexList.indexOf(vertexName);
         ArrayList<Integer> a = weightTable.get(indexVertex);

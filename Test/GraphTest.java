@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
-
 /**
  * Created by Ma$ha on 14.02.2017.
  */
@@ -29,6 +28,13 @@ public class GraphTest {
         assertEquals(Gr.getAllVertex().toString(), "[B]");
     }
     @Test
+    public void changeWeightT() {
+        Graph Gr = new Graph("Gr");
+        Gr.addEdge("A", "B", 5);
+        Gr.changeWeight("A", "B", 10);
+        assertEquals(Gr.getTable().toString(), "[[0, 10], [0, 0]]");
+    }
+    @Test
     public void removeVertexT() {
         Graph Gr = new Graph("Gr");
         Gr.addVertex("A");
@@ -43,25 +49,25 @@ public class GraphTest {
         assertEquals(Gr.getTable().toString(), "[[0, 0], [0, 0]]");
     }
     @Test
-    public void VertexInT() {
+    public void verticesInT() {
         Graph Gr = new Graph("Gr");
         Gr.addEdge("A", "B", 5);
         Gr.addEdge("A", "C", 4);
         Gr.addEdge("A", "D", 3);
         Gr.addEdge("A", "E", 2);
         Gr.addEdge("B", "E", 2);
-        assertEquals(Gr.vertexIn("A").toString(), "[]");
-        assertEquals(Gr.vertexIn("E").toString(), "[A, B]");
+        assertEquals(Gr.verticesIn("A").toString(), "[]");
+        assertEquals(Gr.verticesIn("E").toString(), "[A, B]");
     }
     @Test
-    public void VertexOutT() {
+    public void verticesOutT() {
         Graph Gr = new Graph("Gr");
         Gr.addEdge("A", "B", 5);
         Gr.addEdge("A", "C", 4);
         Gr.addEdge("A", "D", 3);
         Gr.addEdge("A", "E", 2);
         Gr.addEdge("B", "E", 2);
-        assertEquals(Gr.vertexOut("A").toString(), "[B, C, D, E]");
-        assertEquals(Gr.vertexOut("B").toString(), "[E]");
+        assertEquals(Gr.verticesOut("A").toString(), "[B, C, D, E]");
+        assertEquals(Gr.verticesOut("B").toString(), "[E]");
     }
 }
